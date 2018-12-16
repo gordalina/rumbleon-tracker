@@ -351,7 +351,7 @@ function html(parts) {
 
 async function emailResults(parts) {
   return email({
-    subject: `Found ${parts.length} motorcycles that match ${query}`,
+    subject: `Found ${parts.length} motorcycles (${(new Date().toISOString())})`,
     html: html(parts),
   });
 }
