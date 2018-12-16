@@ -358,7 +358,7 @@ async function emailResults(parts) {
 
 async function email(data) {
   const options = Object.assign({
-    from: `mailgun@${MAILGUN_DOMAIN}.mailgun.org`,
+    from: `RumbleOn Tracker <mailgun@${MAILGUN_DOMAIN}.mailgun.org>`,
     to: DESTINATION_EMAIL,
   }, data);
 
