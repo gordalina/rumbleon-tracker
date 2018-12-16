@@ -358,12 +358,13 @@ async function emailResults(parts) {
 
 async function email(data) {
   const options = Object.assign({
-    from: `rumbleon@${MAILGUN_DOMAIN}`,
+    from: `mailgun@${MAILGUN_DOMAIN}.mailgun.org`,
     to: DESTINATION_EMAIL,
   }, data);
 
   return new Promise((resolve, reject) => {
-    const client = mailgun({apiKey: MAILGUN_API_KEY, domain: MAILGUN_DOMAIN});
+    const client = mailgun({apiKey: MAILGUN_API_KEY, domain: `${MAILGUN_DOMAIN}.mailgun.org`});
+
     client.messages().send(options, function (error, body) {
       if (error) {
         return reject(error);
@@ -379,12 +380,14 @@ async function run(searchTerm) {
     const results = flatten(await Promise.all(searchTerm.split(',').map(search)));
     const parts = results.map(render);
 
-    console.log(await emailResults(parts));
+    await emailResults(parts);
   } catch (e) {
-    console.log(await email({
+    await email({
       subject: `Error running rumbleon tracker`,
       html: `<pre>${e.message}\n${e.stack}</pre>`,
-    }));
+    });
+
+    process.exit(1);
   }
 }
 
