@@ -1,0 +1,19 @@
+{
+  "name": "rumbleon-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "search.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "lodash": "^4.17.11",
+    "mailgun-js": "^0.22.0",
+    "moment": "^2.23.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}
