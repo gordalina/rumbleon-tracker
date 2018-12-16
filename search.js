@@ -358,12 +358,12 @@ async function emailResults(parts) {
 
 async function email(data) {
   const options = Object.assign({
-    from: `RumbleOn Tracker <mailgun@${MAILGUN_DOMAIN}.mailgun.org>`,
+    from: `RumbleOn Tracker <mailgun@${MAILGUN_DOMAIN}>`,
     to: DESTINATION_EMAIL,
   }, data);
 
   return new Promise((resolve, reject) => {
-    const client = mailgun({apiKey: MAILGUN_API_KEY, domain: `${MAILGUN_DOMAIN}.mailgun.org`});
+    const client = mailgun({apiKey: MAILGUN_API_KEY, domain: `${MAILGUN_DOMAIN}`});
 
     client.messages().send(options, function (error, body) {
       if (error) {
